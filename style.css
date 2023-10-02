@@ -74,3 +74,10 @@ button {
     text-align: center;
     color: red;
 }
+
+.test {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 2rem;
+}
