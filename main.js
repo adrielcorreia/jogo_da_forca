@@ -13,7 +13,7 @@ const guess_word = 'BICICLE'
 const guess_word_split = guess_word.split('')
 
 for (const i of guess_word_split) {
-    ulTeste.innerHTML += `<li data-letter>${i}</li>`
+    ulTeste.innerHTML += `<li class="lett" data-letter>${i}</li>`
 }
 
 console.log(guess_word_split)
