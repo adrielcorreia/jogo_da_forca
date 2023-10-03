@@ -4,16 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da Forca</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="./src/media_queries.css">
+    <script src="./src/main.js" defer></script>
 </head>
 <body>
     <div class="all">
         <h1 class="lose">VOCÊ PERDEU</h1>
         <div class="main">
-            <h1 class="lifes"></h1>
+            <div class="hangman-div">
+                <img src="./assets/hangman-0.svg" class="hangman" alt="hangman">
+                <div id="second">
+                    <ul class="word"></ul>
+                    <h1 class="lifes" data-life=0></h1>
+                </div>
+            </div>
+            
             <div class="word_and_keyboard">
-                <ul class="test"></ul>
+                
                 <ul class="keyboard"></ul>
             </div>
         </div>
