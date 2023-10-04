@@ -1,10 +1,5 @@
-let keyboard = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ç', 'z', 'x', 'c', 'v', 'b', 'n', 'm']
-
-keyboard = keyboard.map((e) => {
-    return e.toUpperCase()
-})
-
 const guess_word = generate_random().toUpperCase()
+const normal_word = generate_random()
 
 const ul = document.querySelector('.keyboard')
 const word = document.querySelector('.word')
@@ -15,75 +10,89 @@ const img = document.querySelector('.hangman')
 const all = document.querySelector('.all')
 const menu = document.querySelector('.menu')
 const correct_answer = document.querySelector('.corrent_answer')
-correct_answer.innerText = `The correct word was ${guess_word}`
+const tip = document.querySelector('.tip')
+fetchTipData(normal_word)
 
+correct_answer.innerText = `The correct word was ${guess_word}`
 lifes.innerText = `Incorrent guesses: ${lifes.dataset.life}/6`
+let keyboard = []
+for (i=65; i<90; i++) {keyboard.push(String.fromCharCode(i))}
 
 for (const i of gws) {
-    word.innerHTML += `<li class="lett" ><p data-letter>&nbsp</p><div class="underline" data-underline>${i}</div></li>`
+    word.innerHTML += `<li class="lett" ><p data-letter>&nbsp</p><div class="underline" data-underline></div></li>`
 }
 
-for (i = 0; i < keyboard.length; i++) {
-    ul.innerHTML += `<li class="letter"><button data-btn>${keyboard[i]}</button></li>`
+for (const i of keyboard) {
+    ul.innerHTML += `<li class="letter"><button data-btn>${i}</button></li>`
 }
 
 const Letters = document.querySelectorAll('[data-letter]')
 const Underlines = document.querySelectorAll('[data-underline]')
 const button = document.querySelectorAll('[data-btn]')
+const letter = document.querySelectorAll('.letter')
 let count = 0
+
+letter[20].style.gridColumn = '3'
 
 let filter = gws.filter((x, y) => {
     return gws.indexOf(x) == y
 })
 
-console.log(filter)
+function final(msg, img) {
+    const wl_img = document.querySelector('.wl_img')
+    const wl = document.querySelector('.wl')
+    wl_img.src = `./assets/${img}.gif`
+    wl.innerText = msg
+    menu.style.visibility = 'visible'
+    menu.style.opacity = '1'
+    menu.style.background = 'background: rgba(0, 0, 0, .5);'
+    return
+}
+
+function guessed(i) {
+    Letters[i].innerText = gws[i]
+    Letters[i].classList.add('w_guessed') //word guessed
+    Underlines[i].classList.add('u_guessed')
+    btn.style.background = '#9FA1D6'
+}
+
+function not_guessed() {
+    lifes.dataset.life++
+    lifes.innerText = `Incorrent guesses: ${lifes.dataset.life}/6`
+    img.src = `./assets/hangman-${lifes.dataset.life}.svg`
+}
+
+//---------------------------------------------------------------------------
 
 button.forEach(btn => {
+    document.addEventListener('keydown', (e) => {
+        var name = e.key.toUpperCase()
+        if (name == btn.innerText) {
+            btn.click()
+        }
+    }, false)
+
     btn.addEventListener('click', () => {
         if (lifes.dataset.life < 5) {
             btn.style.cursor = 'default'
-
-            for (i = 0; i < gws.length; i++) {
-                if (btn.innerText == gws[i]) {
-                    console.log(btn.innerText);
-                    Letters[i].innerText = gws[i]
-                    Letters[i].classList.add('w_guessed') //word guessed
-                    Underlines[i].classList.add('u_guessed')
-                    btn.style.background = '#9FA1D6'
-                }
-            }
             
             if (gws.includes(btn.innerText)) {
                 count++
                 if (count == filter.length) {
-                    console.log('win')
-                    const wl_img = document.querySelector('.wl_img')
-                    wl_img.src = './assets/victory.gif'
-                    menu.style.visibility = 'visible'
-                    menu.style.opacity = '1'
-                    menu.style.background = 'background: rgba(0, 0, 0, .5);'
-                    const wl = document.querySelector('.wl')
-                    wl.innerText = 'You Win!'
-                    return
+                    final('You Win!', 'victory')
                 }
 
+                for (i = 0; i < gws.length; i++) {
+                    if (btn.innerText == gws[i]) {
+                        guessed(i)
+                    }
+                }
             } else {
-                lifes.dataset.life++
-                lifes.innerText = `Incorrent guesses: ${lifes.dataset.life}/6`
-                img.src = `./assets/hangman-${lifes.dataset.life}.svg`
+                not_guessed()
                 btn.style.background = 'var(--error-color)'
             }
         } else {
-            const wl = document.querySelector('.wl')
-            wl.innerText = 'Game Over!'
-            lifes.dataset.life++
-            lifes.innerText = `Incorrect guesses: ${lifes.dataset.life}/6`
-            img.src = `./assets/hangman-${lifes.dataset.life}.svg`
-            menu.style.visibility = 'visible'
-            menu.style.opacity = '1'
-            menu.style.background = 'background: rgba(0, 0, 0, .5);'
-            return
+            final('Game Over!', 'lost')
         }
-        
     }, {once: true});
 });

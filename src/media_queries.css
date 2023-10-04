@@ -1,5 +1,30 @@
-@media only screen and (max-width: 680px) {
-    .all {
-        transform: scale(.7);
+@media only screen and (max-width: 545px) {
+    #second {
+        padding-top: 0;
+        justify-self: center;
+    }
+
+    .hangman {
+        width: 50%;
+        align-self: flex-end;
+        justify-self: end;
+        padding-bottom: 3rem;
+    }
+
+    .hangman-div {
+        justify-content: center;
+    }
+
+    .keyboard {
+        grid-template-rows: repeat(3, 35px);
+    }
+
+    .main {
+        row-gap: 2rem;
+    }
+
+    button {
+        font-size: 1rem;
+        border-radius: .3rem;
     }
 }
