@@ -6,22 +6,32 @@
     <title>Jogo da Forca</title>
     <link rel="stylesheet" href="./src/style.css">
     <link rel="stylesheet" href="./src/media_queries.css">
+    <link rel="stylesheet" href="./src/win_or_lose.css">
+    <link rel="icon" type="image/x-icon" href="./assets/hangman ico.png">
     <script src="./src/main.js" defer></script>
+    <script src="./src/words_list.js"></script>
 </head>
 <body>
     <div class="all">
-        <h1 class="lose">VOCÊ PERDEU</h1>
+        <div class="menu">
+            <div class="menu_secondary">
+                <img class="wl_img" src="./assets/lost.gif" alt="" width="35%">
+                <h1 class="wl"></h1> 
+                <span class="corrent_answer"></span>
+                <a href="">PLAY AGAIN</a>
+            </div>
+        </div>
         <div class="main">
             <div class="hangman-div">
                 <img src="./assets/hangman-0.svg" class="hangman" alt="hangman">
                 <div id="second">
+                    <h1 class="tip"></h1>
                     <ul class="word"></ul>
                     <h1 class="lifes" data-life=0></h1>
                 </div>
             </div>
             
             <div class="word_and_keyboard">
-                
                 <ul class="keyboard"></ul>
             </div>
         </div>
