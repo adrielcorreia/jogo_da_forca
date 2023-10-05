@@ -9,6 +9,8 @@ const all = document.querySelector('.all')
 const menu = document.querySelector('.menu')
 const correct_answer = document.querySelector('.corrent_answer')
 const tip = document.querySelector('.tip')
+const wl_img = document.querySelector('.wl_img')
+const wl = document.querySelector('.wl')
 let keyboard = []
 
 generate_and_fetch(guess_word)
@@ -35,8 +37,6 @@ let filter = gws.filter((x, y) => {
 })
 
 function final(msg, img) {
-    const wl_img = document.querySelector('.wl_img')
-    const wl = document.querySelector('.wl')
     wl_img.src = `./assets/${img}.gif`
     wl.innerText = msg
     menu.style.visibility = 'visible'
@@ -57,6 +57,10 @@ function not_guessed() {
     img.src = `./assets/hangman-${lifes.dataset.life}.svg`
 }
 
+if (gws.includes(' ')) {
+    count++
+}
+
 //---------------------------------------------------------------------------
 button.forEach(btn => {
     document.addEventListener('keydown', (e) => {
@@ -74,6 +78,7 @@ button.forEach(btn => {
                 count++
                 if (count == filter.length) {
                     final('You Win!', 'victory')
+                    wl_img.style.width = '45%'
                 }
 
                 for (i = 0; i < gws.length; i++) {
@@ -87,7 +92,9 @@ button.forEach(btn => {
                 btn.style.background = 'var(--error-color)'
             }
         } else {
+            not_guessed()
             final('Game Over!', 'lost')
+            wl_img.style.width = '45%'
         }
     }, {once: true});
 });
