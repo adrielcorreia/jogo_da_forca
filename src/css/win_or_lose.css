@@ -12,7 +12,7 @@
 }
 
 .menu_secondary {
-    padding: 2rem;
+    padding: 1rem .8rem;
     opacity: 1;
     background: lightgray;
     display: flex;

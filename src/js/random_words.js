@@ -5,28 +5,24 @@ const animals = [
     "Chameleon", "Dolphin", "Squirrel", "Hawk", "Leopard", 
     "Cheetah", "Polar Bear", "Raven", "Ostrich", "Seagull", 
     "Lynx", "Raccoon", "Sloth", "Hedgehog", "Jaguar", 
-    "Armadillo", "Meerkat", "Albatross", "Lemur", "Octopus", 
+    "Armadillo", "Meerkat", "Lemur", "Octopus", 
     "Gibbon", "Mongoose", "Chinchilla", "Hummingbird", "Vulture", 
     "Koala", "Woodpecker", "Pangolin", "Wallaby", "Hornet", 
     "Beetle", "Dromedary Camel", "Firefly", "Gazelle", "Hamster", 
     "Ibex", "Jackal", "Kestrel", "Koala", "Lynx", 
     "Macaw", "Nightingale", "Ocelot", "Platypus", "Quokka", 
-    "Rattlesnake", "Sparrow", "Tarantula", "Uakari", "Viper", 
+    "Rattlesnake", "Sparrow", "Tarantula", "Uakari", 
     "Weasel", "X-ray Tetra", "Yak", "Zonkey", "Alligator", 
     "Baboon", "Coyote", "Dingo", "Elephant Seal", "Ferret", 
-    "Gelada", "Hippopotamus", "Iguana", "Jellyfish", "Kingfisher", 
+    "Gelada", "Hippopotamus", "Iguana", "Kingfisher", 
     "Lynx", "Mantis Shrimp", "Numbat", "Ox", "Peacock", 
     "Quokka", "Raccoon Dog", "Star-nosed Mole", "Tarsier", "Umbrellabird", 
     "Vampire Bat", "Wallaroo", "X-ray Fish", "Yellowjacket", "Zorse"
 ];
 
-new_word = ''
-used = ''
+let new_word = ''
 
 function generate_random() {
-    while (new_word == used) {
-        new_word = animals[Math.floor(Math.random()*animals.length)]
-    }
-    used = new_word
+    new_word = animals[Math.floor(Math.random()*animals.length)]
     return new_word
 }
