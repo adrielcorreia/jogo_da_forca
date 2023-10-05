@@ -9,15 +9,9 @@ const all = document.querySelector('.all')
 const menu = document.querySelector('.menu')
 const correct_answer = document.querySelector('.corrent_answer')
 const tip = document.querySelector('.tip')
-
 let keyboard = []
 
-const t = generate_and_fetch(guess_word)
-console.log(tip.innerText)
-
-if (t) {
-    console.log('bla')
-}
+generate_and_fetch(guess_word)
 
 correct_answer.innerText = `The correct word was ${guess_word}`
 lifes.innerText = `Incorrent guesses: ${lifes.dataset.life}/6`
