@@ -1,24 +1,29 @@
+// import section
+import { fetchTip } from './api_request.js'
+import { random } from './get_random_word.js'
+
 const ul = document.querySelector('.keyboard')
+const img = document.querySelector('.hangman')
+const tip = document.querySelector('.tip')
 const word = document.querySelector('.word')
 const lifes = document.querySelector('.lifes')
-const lose = document.querySelector('.lose')
-const img = document.querySelector('.hangman')
-const guess_word = generate_random()
-const gws = guess_word.toUpperCase().split('') // guess word split
-const all = document.querySelector('.all')
-const menu = document.querySelector('.menu')
-const correct_answer = document.querySelector('.corrent_answer')
-const tip = document.querySelector('.tip')
 const wl_img = document.querySelector('.wl_img')
 const wl = document.querySelector('.wl')
+const answer = document.querySelector('.corrent_answer')
+const menu = document.querySelector('.menu')
+
+const gssWord = random()
+const gws = gssWord.toUpperCase().split('') // guess word split
 let keyboard = []
 
-generate_and_fetch(guess_word)
+fetchTip(gssWord).then((slogan) => {
+    tip.innerText = slogan
+})
 
-correct_answer.innerText = `The correct word was ${guess_word}`
+answer.innerText = `The correct word was ${gssWord}`
 lifes.innerText = `Incorrent guesses: ${lifes.dataset.life}/6`
 
-for (i=65; i<90; i++) {keyboard.push(String.fromCharCode(i))}
+for (let i = 65; i < 90; i++) {keyboard.push(String.fromCharCode(i))}
 
 for (const i of gws) {word.innerHTML += `<li class="lett" ><p data-letter>&nbsp</p><div class="underline" data-underline></div></li>`}
 
@@ -81,7 +86,7 @@ button.forEach(btn => {
                     wl_img.style.width = '45%'
                 }
 
-                for (i = 0; i < gws.length; i++) {
+                for (let i = 0; i < gws.length; i++) {
                     if (btn.innerText == gws[i]) {
                         guessed(i)
                         btn.style.background = '#9FA1D6'
