@@ -1,6 +1,6 @@
 // import section
 import { fetchTip } from './api_request.js'
-import { random } from './get_random_word.js'
+import { random } from './random.js'
 
 const ul = document.querySelector('.keyboard')
 const img = document.querySelector('.hangman')
