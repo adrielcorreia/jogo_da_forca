@@ -8,9 +8,9 @@ const tip = document.querySelector('.tip')
 const word = document.querySelector('.word')
 const lifes = document.querySelector('.lifes')
 const wl_img = document.querySelector('.wl_img')
-const wl = document.querySelector('.wl')
 const answer = document.querySelector('.corrent_answer')
 const menu = document.querySelector('.menu')
+const wl = document.querySelector('.wl')
 
 const gssWord = random()
 const gws = gssWord.toUpperCase().split('') // guess word split
