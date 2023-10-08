@@ -27,7 +27,7 @@ for (let i = 65; i < 90; i++) {keyboard.push(String.fromCharCode(i))}
 
 for (const i of gws) {word.innerHTML += `<li class="lett" ><p data-letter>&nbsp</p><div class="underline" data-underline></div></li>`}
 
-for (const i of keyboard) {ul.innerHTML += `<li class="letter"><button data-btn>${i}</button></li>`}
+for (const i of keyboard) {ul.innerHTML += `<li class="letter"><button class="btn btn-primary" data-btn>${i}</button></li>`}
 
 const Letters = document.querySelectorAll('[data-letter]')
 const Underlines = document.querySelectorAll('[data-underline]')
@@ -40,6 +40,8 @@ letter[20].style.gridColumn = '3'
 let filter = gws.filter((x, y) => {
     return gws.indexOf(x) == y
 })
+
+console.log('filter:', filter)
 
 function final(msg, img) {
     wl_img.src = `./assets/${img}.gif`
@@ -65,6 +67,13 @@ function not_guessed() {
 if (gws.includes(' ')) {
     count++
 }
+console.log(gws)
+for (let i = 0; i < gws.length; i++) {
+    
+    if (gws[i] == ' ') {
+        Underlines[i].classList.add('u_guessed')
+    }
+}
 
 //---------------------------------------------------------------------------
 button.forEach(btn => {
@@ -76,11 +85,14 @@ button.forEach(btn => {
     }, false)
 
     btn.addEventListener('click', () => {
+        btn.setAttribute('disabled', '')
+
         if (lifes.dataset.life < 5) {
             btn.style.cursor = 'default'
             
             if (gws.includes(btn.innerText)) {
                 count++
+                console.log(count)
                 if (count == filter.length) {
                     final('You Win!', 'victory')
                     wl_img.style.width = '45%'
@@ -89,12 +101,11 @@ button.forEach(btn => {
                 for (let i = 0; i < gws.length; i++) {
                     if (btn.innerText == gws[i]) {
                         guessed(i)
-                        btn.style.background = '#9FA1D6'
                     }
                 }
             } else {
                 not_guessed()
-                btn.style.background = 'var(--error-color)'
+                //btn.style.background = 'var(--error-color)'
             }
         } else {
             not_guessed()
