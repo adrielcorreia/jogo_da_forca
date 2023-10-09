@@ -24,9 +24,7 @@ answer.innerText = `The correct word was ${gssWord}`
 lifes.innerText = `Incorrent guesses: ${lifes.dataset.life}/6`
 
 for (let i = 65; i < 90; i++) {keyboard.push(String.fromCharCode(i))}
-
 for (const i of gws) {word.innerHTML += `<li class="lett" ><p data-letter>&nbsp</p><div class="underline" data-underline></div></li>`}
-
 for (const i of keyboard) {ul.innerHTML += `<li class="letter"><button data-btn>${i}</button></li>`}
 
 const Letters = document.querySelectorAll('[data-letter]')
@@ -62,10 +60,12 @@ function not_guessed() {
     img.src = `./assets/hangman-${lifes.dataset.life}.svg`
 }
 
-if (gws.includes(' ')) {
-    count++
+for (let i = 0; i < gws.length; i++) {
+    if (gws[i] == ' ') {
+        count++
+        Underlines[i].classList.add('u_guessed')
+    }
 }
-
 //---------------------------------------------------------------------------
 button.forEach(btn => {
     document.addEventListener('keydown', (e) => {
