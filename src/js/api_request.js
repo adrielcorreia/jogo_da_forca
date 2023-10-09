@@ -13,8 +13,8 @@ export async function fetchTip(animal) {
         name = data[0].name
         
     }).catch(() => {
-        if (name == '' || name == undefined) {
-            console.log(`animal inexistente`)
+        if (name == '' || name == undefined || name == ' ') {
+            console.log(`animal inexistente:`, name)
         } else {
             console.log('deu erro na hora do fetch')
         }
