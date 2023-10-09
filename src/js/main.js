@@ -35,8 +35,6 @@ const button = document.querySelectorAll('[data-btn]')
 const letter = document.querySelectorAll('.letter')
 let count = 0
 
-letter[20].style.gridColumn = '3'
-
 let filter = gws.filter((x, y) => {
     return gws.indexOf(x) == y
 })
@@ -64,13 +62,11 @@ function not_guessed() {
     img.src = `./assets/hangman-${lifes.dataset.life}.svg`
 }
 
-if (gws.includes(' ')) {
-    count++
-}
 console.log(gws)
 for (let i = 0; i < gws.length; i++) {
     
     if (gws[i] == ' ') {
+        count++
         Underlines[i].classList.add('u_guessed')
     }
 }
@@ -93,6 +89,7 @@ button.forEach(btn => {
             if (gws.includes(btn.innerText)) {
                 count++
                 console.log(count)
+                
                 if (count == filter.length) {
                     final('You Win!', 'victory')
                     wl_img.style.width = '45%'
