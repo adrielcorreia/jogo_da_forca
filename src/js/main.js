@@ -36,7 +36,6 @@ let count = 0
 letter[20].style.gridColumn = '3'
 
 let filter = new Set(gws)
-console.log(filter)
 
 function final(msg, img) {
     wl_img.src = `./assets/${img}.gif`
