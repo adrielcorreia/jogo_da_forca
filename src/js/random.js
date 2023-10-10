@@ -11,7 +11,7 @@ const animals = [
     'Hummingbird', 'Koala', 'Wallaby', 
     'Hornet', 'Jackal', 'Koala', 'Macaw', 
     'Nightingale', 'Ocelot', 'Platypus', 
-    'Quokka', 'Uakari', 'Weasel', 'X-ray Tetra', 
+    'Quokka', 'Uakari', 'Weasel', 
     'Yak', 'Zonkey', 'Alligator', 'Baboon', 
     'Coyote', 'Dingo', 'Elephant Seal', 'Hippopotamus', 
     'Kingfisher', 'Numbat', 'Ox', 'Peacock', 'Quokka', 'Raccoon Dog', 'Tarsier', 'Umbrellabird', 'Vampire Bat', 'Zorse'

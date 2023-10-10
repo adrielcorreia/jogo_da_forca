@@ -20,10 +20,10 @@ fetchTip(gssWord).then((slogan) => {
     tip.innerText = slogan
 })
 
-answer.innerText = `The correct word was ${gssWord}`
 lifes.innerText = `Incorrent guesses: ${lifes.dataset.life}/6`
 
-for (let i = 65; i < 90; i++) {keyboard.push(String.fromCharCode(i))}
+for (let i = 65; i < 91; i++) {keyboard.push(String.fromCharCode(i))}
+
 for (const i of gws) {word.innerHTML += `<li class="lett" ><p data-letter>&nbsp</p><div class="underline" data-underline></div></li>`}
 for (const i of keyboard) {ul.innerHTML += `<li class="letter"><button data-btn>${i}</button></li>`}
 
@@ -36,6 +36,7 @@ let count = 0
 letter[20].style.gridColumn = '3'
 
 let filter = new Set(gws)
+console.log(filter)
 
 function final(msg, img) {
     wl_img.src = `./assets/${img}.gif`
@@ -43,6 +44,7 @@ function final(msg, img) {
     menu.style.visibility = 'visible'
     menu.style.opacity = '1'
     menu.style.background = 'background: rgba(0, 0, 0, .5);'
+    answer.innerText = `The correct word was ${gssWord}`
     return
 }
 
@@ -79,7 +81,7 @@ button.forEach(btn => {
             
             if (gws.includes(btn.innerText)) {
                 count++
-                if (count == filter.length) {
+                if (count == filter.size) {
                     final('You Win!', 'victory')
                     wl_img.style.width = '45%'
                 }
