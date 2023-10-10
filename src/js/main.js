@@ -35,9 +35,7 @@ let count = 0
 
 letter[20].style.gridColumn = '3'
 
-let filter = gws.filter((x, y) => {
-    return gws.indexOf(x) == y
-})
+let filter = new Set(gws)
 
 function final(msg, img) {
     wl_img.src = `./assets/${img}.gif`
