@@ -91,6 +91,7 @@ button.forEach(btn => {
                 not_guessed()
                 btn.style.background = 'var(--error-color)'
             }
+            
         } else {
             not_guessed()
             final('Você perdeu!', 'lost')
