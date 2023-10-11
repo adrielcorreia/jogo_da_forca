@@ -1,4 +1,4 @@
-const animais = [
+export const animais = [
     { 
         nome: "gato", 
         dica: "É um animal de estimação com quatro patas." 

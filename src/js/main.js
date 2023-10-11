@@ -29,7 +29,6 @@ let count = 0
 
 wl_img.style.width = '45%'
 tip.innerText = randomAnimal.dica
-lifes.innerText = `Tentativas: ${lifes.dataset.life}/6`
 letter[20].style.gridColumn = '3'
 
 function final(msg, img) {
@@ -91,6 +90,7 @@ button.forEach(btn => {
                 not_guessed()
                 btn.style.background = 'var(--error-color)'
             }
+
         } else {
             not_guessed()
             final('Você perdeu!', 'lost')
