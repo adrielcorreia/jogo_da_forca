@@ -112,7 +112,7 @@ button:hover {
 .underline {
     color: transparent;
     border-radius: 1rem;
-    width: 150%;
+    width: 1.25rem;
     height: 2.4px;
     background: black;
 }
